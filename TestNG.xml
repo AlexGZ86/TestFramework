@@ -2,10 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Project Suite">
 
+    <!--set up the listener to run the report after Suite is completed-->
+    <listeners>
+        <listener class-name="Utils.Listener"></listener>
+    </listeners>
+
     <test name="Page Object Model Project">
         <classes>
-            <class name="Tests.HeaderMenuLinksTest" />
-            <!--<class name="Tests.HomepageTest" />-->
+            <class name="tests.HeaderMenuLinksTest" />
+            <class name="tests.HomepageTest" />
+            <class name="tests.PagesHTTPStatus" />
         </classes>
     </test>
 

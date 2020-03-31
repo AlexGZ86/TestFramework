@@ -1,7 +1,6 @@
-package Tests;
+package tests;
 
-import WebSite.HttpRequestStatus;
-import org.apache.http.HttpStatus;
+import website.HttpRequestStatus;
 
 import org.testng.annotations.Test;
 

@@ -1,6 +1,5 @@
-package WebSite;
+package website;
 
-import Tests.TestBase;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;

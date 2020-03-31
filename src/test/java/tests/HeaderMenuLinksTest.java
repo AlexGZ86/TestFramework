@@ -1,8 +1,6 @@
-package Tests;
+package tests;
 
-import WebSite.HomePage;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+import website.HomePage;
 import org.testng.annotations.Test;
 
 public class HeaderMenuLinksTest extends TestBase {
@@ -14,7 +12,6 @@ public class HeaderMenuLinksTest extends TestBase {
         homePage = new HomePage(driver);
 
         homePage.goToAboutUs();
-
         homePage.gotoBlog();
         homePage.gotoCareers();
         homePage.gotoContactUs();

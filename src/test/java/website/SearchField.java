@@ -1,4 +1,4 @@
-package WebSite;
+package website;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,5 +13,8 @@ WebDriver driver;
     @FindBy(css=".search-form.search-form__primary.views-exposed-form > form[method='get']  input#edit-keys")
     WebElement searchField;
 
+    public void clickSearchField(){
+        searchField.click();
+    }
 
 }

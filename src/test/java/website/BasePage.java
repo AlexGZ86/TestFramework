@@ -1,4 +1,4 @@
-package WebSite;
+package website;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
