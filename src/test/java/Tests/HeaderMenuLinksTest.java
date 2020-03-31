@@ -2,47 +2,24 @@ package Tests;
 
 import WebSite.HomePage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HeaderMenuLinksTest extends TestBase{
-
-
-
-    HomePage homePage = PageFactory.initElements(driver,HomePage.class);
+public class HeaderMenuLinksTest extends TestBase {
+    HomePage homePage;
 
     @Test
-    public void clickAboutUs(){
+    public void openHeaderLinks() {
+
+        homePage = new HomePage(driver);
+
         homePage.goToAboutUs();
+
+        homePage.gotoBlog();
+        homePage.gotoCareers();
+        homePage.gotoContactUs();
+        homePage.gotoExecutive();
+        homePage.gotoLocations();
+        homePage.gotoNews();
     }
-
-    @Test
-    public void clickNews(){
-    homePage.gotoNews();
-    }
-
-    @Test
-    public void clickCareers(){
-    homePage.gotoCareers();
-    }
-
-    @Test
-    public void clickExecutiveTeam(){
-    homePage.gotoExecutive();
-    }
-
-    @Test
-    public void clickLocations(){
-    homePage.gotoLocations();
-    }
-
-    @Test
-    public void clickContactUs(){
-    homePage.gotoContactUs();
-    }
-
-    @Test
-    public void clickBlog(){
-    homePage.gotoBlog();
-}
-
 }

@@ -3,6 +3,7 @@ package Tests;
 import WebSite.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,6 +13,8 @@ import java.util.logging.Logger;
 
 public class HomepageTest extends TestBase {
 
+
+
   @Test
   public void getHomepageTitle() {
     String actualTitle = "Primary Care Medical Centers for Seniors | ChenMed";
@@ -20,4 +23,9 @@ public class HomepageTest extends TestBase {
     actualTitle = "Chenmedical";
     Assert.assertEquals(driver.getTitle(), actualTitle,"title does not match");
   }
+
+
+
+
+
 }

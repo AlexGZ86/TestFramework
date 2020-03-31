@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
+
   public WebDriver driver;
 
   public WebDriverWait wait ;//= new WebDriverWait(driver, 60);
 
   public BasePage(WebDriver driver) {
     this.driver=driver;
+    PageFactory.initElements(driver,this);
   }
 
   public <T> void waitForVisible_Click(T element) {

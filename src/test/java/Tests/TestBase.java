@@ -1,13 +1,17 @@
 package Tests;
 
+import WebSite.BasePage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.*;
 
@@ -23,8 +27,10 @@ public class TestBase {
 
 
     driver = new ChromeDriver();
-    driver.get("https://www.chenmed.com/");
+    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     driver.manage().window().maximize();
+    driver.get("https://www.chenmed.com/");
+
     waitForPageLoaded();
 
     wait = new WebDriverWait(driver, 30, 1000);
@@ -34,7 +40,10 @@ public class TestBase {
     waitForPageLoaded();
   }
 
+@BeforeMethod
+void InitializeElements(){
 
+}
 
   @AfterSuite
   public void terminateSession() {

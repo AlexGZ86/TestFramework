@@ -8,12 +8,19 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomePage  {
+
+/* Created by Alex Galindo
+ *   March 27th 2020
+ * */
+
+public class HomePage {
 
     WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver=driver;
+        this.driver = driver;
+        PageFactory.initElements(driver,this);
+
     }
 
     @FindBy(id = "block-chenmed-branding")
@@ -40,38 +47,44 @@ public class HomePage  {
     @FindBy(css = "nav#block-chenmed-main-menu a[title='Blog']")
     public WebElement Blog;
 
-    BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+
+BasePage basePage = new BasePage(driver);
 
     public void gotoNews() {
 
-        basePage.scrollToClick(NewsLink);
+//        basePage.scrollToClick(NewsLink);
         NewsLink.click();
     }
 
     public void goToAboutUs() {
-        basePage.scrollToClick(AboutUsLink);
+//        basePage.scrollToClick(AboutUsLink);
+        AboutUsLink.click();
 
     }
 
     public void gotoCareers() {
-
+//        basePage.scrollToClick(CareersLink);
         CareersLink.click();
     }
+
     public void gotoExecutive() {
 
         ExectiveTeamLink.click();
 
     }
+
     public void gotoLocations() {
 
         locationLink.click();
 
     }
+
     public void gotoContactUs() {
 
         ContactUsLink.click();
 
     }
+
     public void gotoBlog() {
 
         Blog.click();
