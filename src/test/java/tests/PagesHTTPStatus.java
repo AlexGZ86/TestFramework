@@ -5,20 +5,22 @@ import website.HttpRequestStatus;
 import org.testng.annotations.Test;
 
 
-
 @Test
-public class PagesHTTPStatus extends TestBase {
+public class PagesHTTPStatus extends BaseTest {
 
-   HttpRequestStatus getstatus ;
+    HttpRequestStatus getstatus;
 
-    public void setup(){
-   getstatus = new HttpRequestStatus(driver);
-   getstatus.HttpURLStatus("https://www.chenmed.com/news");
-        getstatus.HttpURLStatus("https://www.chenmed.com/our-centers");
-        getstatus.HttpURLStatus("https://www.chenmed.com/executive-team");
-        getstatus.HttpURLStatus("https://www.chenmed.com/contact");
-        getstatus.HttpURLStatus("https://www.chenmed.com/blog");
-        getstatus.HttpURLStatus("https://www.chenmed.com/about-us");
-        getstatus.HttpURLStatus("https://www.chenmed.com/careers");
+    //DEMO TO SHOW HOW TO VALIDATE PAGES IF THEY ARE RETURNING A 200 RESPONSE FROM THE SERVER.****//
+
+    public void validateServerResponseforPages() {
+        getstatus = new HttpRequestStatus(driver);
+
+        getstatus.HttpURLStatus("https://www.travelocity.com/Vacation-Packages");
+        getstatus.HttpURLStatus("https://www.travelocity.com/Hotels");
+        getstatus.HttpURLStatus("https://www.travelocity.com/Cars");
+        getstatus.HttpURLStatus("https://www.travelocity.com/Flights");
+        getstatus.HttpURLStatus("https://www.travelocity.com/Activities");
+        getstatus.HttpURLStatus("https://www.travelocity.com/Cruises");
+
     }
 }

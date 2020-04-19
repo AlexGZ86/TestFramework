@@ -7,11 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HttpRequestStatus   {
-  WebDriver driver;
+public class HttpRequestStatus extends BasePage  {
 
-  public HttpRequestStatus(WebDriver driver) {
-    this.driver= driver;
+
+  public HttpRequestStatus(WebDriver driver){
+    super(driver);
   }
 
   private static HttpURLConnection connection;
@@ -37,9 +37,5 @@ public class HttpRequestStatus   {
     }
   }
 }
-//    HttpClient client = HttpClient.newHttpClient();
-//    HttpRequest request =
-// HttpRequest.newBuilder().uri(URI.create("https://www.chenmed.com/news")).build();
-//      client.sendAsync(request,
-// HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).thenAccept(System.out::println).join();
-//  }
+
+
