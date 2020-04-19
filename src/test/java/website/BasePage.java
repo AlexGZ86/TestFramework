@@ -4,50 +4,112 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.Random;
+
 public class BasePage {
+    WebDriver driver;
 
-  public WebDriver driver;
+    //    public Actions action = new Actions(driver);
+    public Random random = new Random();
 
-  public WebDriverWait wait ;//= new WebDriverWait(driver, 60);
+    public WebDriverWait wait;//= new WebDriverWait(driver, 60);
 
-  public BasePage(WebDriver driver) {
-    this.driver=driver;
-    PageFactory.initElements(driver,this);
-  }
+    public BasePage(WebDriver driver) {
+        this.driver = (driver);
+        PageFactory.initElements(driver, this);
 
-  public <T> void waitForVisible_Click(T element) {
-    if (element.getClass().getName().contains("By")) {
-      wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
-      driver.findElement((By) element).click();
-
-    } else {
-      System.out.println("Could not find visible element ");
     }
-  }
 
-  protected <T> void writeText(T element, String text) {
-    if (element.getClass().getName().contains("By")) {
-      driver.findElement((By) element).sendKeys(text);
-    } else {
-      ((WebElement) element).sendKeys(text);
+
+    protected <T> void writeText(T element, String text) {
+        if (element.getClass().getName().contains("By")) {
+            driver.findElement((By) element).sendKeys(text);
+        } else {
+            ((WebElement) element).sendKeys(text);
+        }
     }
-  }
 
-  public <T> void scrollToClick(T element) {
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", element);
-    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-  }
-
-  public <T> String readText(T element) {
-    if (element.getClass().getName().contains("By")) {
-      return driver.findElement((By) element).getText();
-
-    } else {
-      return ((WebElement) element).getText();
+    public <T> void scrollToElement(T element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
-  }
+
+    public <T> String readText(T element) {
+        if (element.getClass().getName().contains("By")) {
+            return driver.findElement((By) element).getText();
+
+        } else {
+            return ((WebElement) element).getText();
+        }
+    }
+
+    public void selectByValue(WebElement element, String value) {
+        Select select = new Select(element);
+        select.selectByValue(value);
+    }
+
+    public void selectByInt(WebElement element, int index) {
+        Select select = new Select(element);
+        select.selectByIndex(index);
+
+    }
+
+
+    public void clickEscapeButton() throws Exception {
+        Robot r = new Robot();
+        r.keyPress(KeyEvent.VK_ESCAPE);
+        r.keyRelease(KeyEvent.VK_ESCAPE);
+        driver.switchTo().defaultContent();
+
+    }
+
+//    public void hoverClick(WebElement element) {
+//
+//        if (element.getClass().getName().contains("By")) {
+//            driver.findElement((By) element);
+//            action.moveToElement(element);
+//            action.click().build().perform();
+//
+//        } else
+//            System.out.println("Unable to hover and click over this element");
+//    }
+
+    public <T> void waitForStaleness(T element) {
+        if (element.getClass().getName().contains("By")) {
+            wait.until(ExpectedConditions.stalenessOf((WebElement) element));
+        }
+    }
+
+    public <T> void waitForInvisibility(T element) {
+        if (element.getClass().getName().contains("By")) {
+            wait.until(ExpectedConditions.invisibilityOf((WebElement) element));
+        }
+
+    }
+
+    public <T> void waitForVisibility(T element) {
+        if (element.getClass().getName().contains("By")) {
+            wait.until(ExpectedConditions.visibilityOf((WebElement) element)).click();
+        } else {
+            System.out.println("Could not find visible element using visibilityOfElement ");
+        }
+
+    }
+    public <T> void waitForClickable(T element) {
+        if (element.getClass().getName().contains("By")) {
+            wait.until(ExpectedConditions.elementToBeClickable((By) element)).click();
+        } else {
+            System.out.println("Could not find visible element using visibilityOfElement ");
+        }
+
+    }
+
 }

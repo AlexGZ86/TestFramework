@@ -5,130 +5,78 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+import java.util.List;
 
 
-/* Created by Alex Galindo
- *   March 27th 2020
+/* Created by Alex Galindo //using Travelocity as an example to run test cases *******
+ *   March 30th 2020
  * */
 
-public class HomePage {
+public class HomePage extends BasePage{
 
-    WebDriver driver;
-
-    public HomePage(WebDriver driver) {
-        this .driver = driver;
-        PageFactory.initElements(driver, this );
-
-    }
-
-    @FindBy(id = "block-chenmed-branding")
+    @FindBy(css = "img[alt='PHPTRAVELS | Travel Technology Partner']")
     public WebElement homeIcon;
 
-    @FindBy(css = "nav#block-chenmed-main-menu > ul > li:nth-of-type(1) > a")
-    public WebElement AboutUsLink;
-
-    @FindBy(css = "a[title='News']")
-    public WebElement NewsLink;
-
-    @FindBy(css = "nav#block-chenmed-main-menu > ul > li:nth-of-type(3) > a")
-    public WebElement CareersLink;
-
-    @FindBy(css = "nav#block-chenmed-main-menu > ul > li:nth-of-type(4) > a")
-    public WebElement ExectiveTeamLink;
-
-    @FindBy(css = "nav#block-chenmed-main-menu > ul > li:nth-of-type(5) > a")
-    public WebElement locationLink;
-
-    @FindBy(css = "nav#block-chenmed-main-menu > ul > li:nth-of-type(6) > a")
-    public WebElement ContactUsLink;
-
-    @FindBy(css = "nav#block-chenmed-main-menu a[title='Blog']")
-    public WebElement Blog;
+    @FindBy(css = "[title='home']")
+    public WebElement homeMenu;
 
 
-//    BasePage basePage = new BasePage(driver);
-
-    public void gotoNews() {
-
-        try {
-            NewsLink.click();
-            System.out.println("Page clicked on and Displayed is : " + NewsLink.getText());
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-    }
-
-    public void goToAboutUs() {
-//        basePage.scrollToClick(AboutUsLink);
-        try {
-            AboutUsLink.click();
-            System.out.println("Page clicked on and Displayed is : " + AboutUsLink.getText());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void gotoCareers() {
-//        basePage.scrollToClick(CareersLink);
-
-        try {
-            CareersLink.click();
-            System.out.println("Page clicked on and Displayed is : " + CareersLink.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void gotoExecutive() {
-
-        try {
-            ExectiveTeamLink.click();
-            System.out.println("Page clicked on and Displayed is : " + CareersLink.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
-
-
-    public void gotoLocations() {
-
-        try {
-            locationLink.click();
-            System.out.println("Page clicked on and Displayed is : " + locationLink.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public HomePage(WebDriver driver) {
+        super(driver);
 
     }
 
 
-    public void gotoContactUs() {
 
-        try {
-            ContactUsLink.click();
-            System.out.println("Page clicked on and Displayed is : " + ContactUsLink.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//    public void clickHeaderMenus() {
+//
+//        try {
+////
+//            System.out.println("Page");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
-    }
 
 
-    public void gotoBlog() {
-        try {
-            Blog.click();
-            System.out.println("Page clicked on and Displayed is : " + Blog.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
 
 }
+//**** use random selection to fill out fields in *****//
+
+//    public void select_PersonalInfo_Title() {
+//
+//        int index = random.nextInt(4) + 2;  // Range between 0 to x + 2 because I don't want the 0 option nor the first
+//        Select list = new Select(PersonalInfo_Title);
+//        list.selectByIndex(index);
+//
+//    }
+//
+//    public void select_PersonalInfo_DOB_() throws Exception {
+//
+//        PersonalInfo_DOB.clear();
+//        String date = getRandomBirthDate();
+//        System.out.println(date);
+//        PersonalInfo_DOB.sendKeys(date);
+//        Thread.sleep(750);
+//        clickEscapeButton();
+//        waitForInvisibility(calendarWindow);
+//    }
+//
+//    public void selectCountryOfBirth() {
+//
+//        int index = random.nextInt(100) + 1;
+//        Select list = new Select(PersonalInfo_BirthNation);
+//        list.selectByIndex(index);
+//    }
+
+
 
 

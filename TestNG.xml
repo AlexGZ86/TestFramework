@@ -4,14 +4,15 @@
 
     <!--set up the listener to run the report after Suite is completed-->
     <listeners>
-        <listener class-name="Utils.Listener"></listener>
+        <listener class-name="utils.Listener"></listener>
     </listeners>
 
     <test name="Page Object Model Project">
         <classes>
-            <class name="tests.HeaderMenuLinksTest" />
-            <class name="tests.HomepageTest" />
-            <class name="tests.PagesHTTPStatus" />
+
+            <class name="tests.FlightsTabTest" />
+            <!--<class name="tests.PagesHTTPStatus" />-->
+            <!--<class name="tests.LoginTest" />-->
         </classes>
     </test>
 
