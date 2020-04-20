@@ -9,11 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import utils.RandomStringGenerator;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+
 
 public class Flights extends BasePage {
 
@@ -38,14 +34,22 @@ public class Flights extends BasePage {
     public WebElement DepartingDates;
     @FindBy(xpath = "//div[@id='flight-returning-wrapper-hp-flight']//input[@id='flight-returning-hp-flight']")
     public WebElement ReturningDates;
-    @FindBy(css = "select#flight-adults-hp-flight")
+    @FindBy(xpath = "//select[@id='hotel-1-adults-hp-hotel']")
     public WebElement AdultCountDropDown;
     @FindBy(css = "select#flight-children-hp-flight")
     public WebElement ChildrenCountDropDown;
 
-    @FindBy(css = ".btn-text.close.datepicker-close-btn")
-    public WebElement datePickerClose;
+    @FindBy(css = "div#hotel-checkin-wrapper-hp-hotel > .datepicker-dropdown .btn-text.close.datepicker-close-btn")
+    public WebElement DatePickerClose;
 
+    @FindBy(xpath = "//select[@id='flight-age-select-1-hp-flight']")
+    public WebElement Children1AgeDropDown;
+
+    @FindBy(xpath = "//select[@id='flight-age-select-2-hp-flight']")
+    public WebElement Children2AgeDropDown;
+
+    @FindBy(xpath = "//select[@id='flight-age-select-3-hp-flight']")
+    public WebElement Children3AgeDropDown;
 
     public void clickFlightTab() {
         scrollToElement(FlightTab);
@@ -68,6 +72,34 @@ public class Flights extends BasePage {
         kids.selectByIndex(index);
         System.out.println("selected random value between 1 and 4 for Children :" + index);
 
+
+    }
+
+    public void selectChildrensAgeifChildrenwereSelected() {
+        if (Children1AgeDropDown.isDisplayed()) {
+            //waitForVisibility(Children1AgeDropDown);
+            int index = random.nextInt(17) + 1;
+            Select list = new Select(Children1AgeDropDown);
+            list.selectByIndex(index);
+            System.out.println("selected random value for Kids1 age, between 1 and 17 for Children :" + index);
+
+            if (Children2AgeDropDown.isDisplayed()) {
+                //waitForVisibility(Children2AgeDropDown);
+                int index2 = random.nextInt(17) + 1;
+                Select list2 = new Select(Children1AgeDropDown);
+                list2.selectByIndex(index);
+                System.out.println("selected random value for Kid #2 age, between 1 and 17 for Children :" + index2);
+
+                if (Children3AgeDropDown.isDisplayed()) {
+                   // waitForVisibility(Children3AgeDropDown);
+                    int index3 = random.nextInt(17) + 1;
+                    Select list3 = new Select(Children1AgeDropDown);
+                    list3.selectByIndex(index);
+                    System.out.println("selected random value for Kid #3 age, between 1 and 17 for Children :" + index3);
+
+                }
+            }
+        }
     }
 
     public void selectARandomFlightFromFlightsTab() throws Exception {
@@ -86,12 +118,11 @@ public class Flights extends BasePage {
         //Departing date
         String enterDate = RandomStringGenerator.getTravelDate();
         DepartingDates.sendKeys(enterDate);
-
-
+        System.out.println("selected departing date of:"+ enterDate);
+        System.out.println("selected return date of:  07/15/2020");
 //        ReturningDates.sendKeys(Keys.chord(Keys.COMMAND, "a"));
 //        ReturningDates.sendKeys(Keys.chord(Keys.DELETE));
-        System.out.println("selected return date of:  07/15/2020");
-        selectNoOfAdults();
+
 
     }
 

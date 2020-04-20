@@ -14,15 +14,19 @@ public class FlightsTabTest extends BaseTest {
         flights = new Flights(driver);
         //
         flights.clickFlightTab();
+        flights.selectNoOfAdults();
+        flights.selectNoOfChildren();
+        flights.selectChildrensAgeifChildrenwereSelected();
         flights.selectARandomFlightFromFlightsTab();
         flights.clickSearchButton();
         wait.until(ExpectedConditions.urlContains("roundtrip"));
+
     }
 
     @Test(priority = 2)
-    public void displayResults() throws Exception {
+    public void displayRoundTripFlightResults() throws Exception {
         waitForPageLoaded();
-
+        System.out.println("let page display so it shows backend results");
     }
 }
 
