@@ -3,21 +3,24 @@ package tests;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 import utils.RandomStringGenerator;
+import website.Children;
 import website.Flights;
 
 public class FlightsTabTest extends BaseTest {
 
     Flights flights;
+    Children children;
 
     @Test(priority = 1)
     public void selectRoundTripRandomDataForFlightsTab() throws Exception {
         flights = new Flights(driver);
+        children = new Children(driver);
         //
         flights.clickFlightTab();
-        flights.selectNoOfAdults();
-        flights.selectNoOfChildren();
-        flights.selectChildrensAgeifChildrenwereSelected();
         flights.selectARandomFlightFromFlightsTab();
+        flights.selectNoOfAdults();
+        children.selectNoOfChildren();
+
         flights.clickSearchButton();
         wait.until(ExpectedConditions.urlContains("roundtrip"));
 
